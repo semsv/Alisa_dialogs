@@ -66,12 +66,12 @@ def handle_dialog(req, res):
         res['response']['buttons'] = get_suggests(user_id)
         return
     
-	# Если пользователь уже выбрал язык с которого необходимо сделать перевод
-	if select_lang in ['1']:
-	    res['response']['text'] = requests.get('https://translate.yandex.ru/?utm_source=wizard&lang=en-ru&text="%s"' % (
-		    req['request']['original_utterance'].lower()
-		)).text
-	    return
+    # Если пользователь уже выбрал язык с которого необходимо сделать перевод
+    if select_lang in ['1']:
+        res['response']['text'] = requests.get('https://translate.yandex.ru/?utm_source=wizard&lang=en-ru&text="%s"' % (
+	    req['request']['original_utterance'].lower()
+	)).text
+        return
 		
     # Обрабатываем ответ пользователя.
     if req['request']['original_utterance'].lower() in [
